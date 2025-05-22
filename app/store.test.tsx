@@ -348,7 +348,7 @@ describe("useStoreSync", () => {
 
     // Fast-forward time to trigger interval
     act(() => {
-      jest.advanceTimersByTime(2000);
+      jest.advanceTimersByTime(5000);
     });
 
     // Should have made a second fetch call
@@ -356,7 +356,7 @@ describe("useStoreSync", () => {
 
     // Fast-forward again
     act(() => {
-      jest.advanceTimersByTime(2000);
+      jest.advanceTimersByTime(5000);
     });
 
     // Should have made a third fetch call

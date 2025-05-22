@@ -224,8 +224,8 @@ export function useStoreSync(
     // Initial sync
     fetchAndSyncStore();
 
-    // Set up polling interval (every 2 seconds)
-    const intervalId = setInterval(fetchAndSyncStore, 2000);
+    // Set up polling interval (every 5 seconds)
+    const intervalId = setInterval(fetchAndSyncStore, 5000);
 
     // Clean up on unmount
     return () => clearInterval(intervalId);
