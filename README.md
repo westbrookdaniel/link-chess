@@ -1,97 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Link Chess
+
+A web application that lets you create, share, and play chess games with anyone through unique URLs.
+
+## Features
+
+- **Shareable Links**: Create a chess game and share the URL with friends or opponents
+- **Password Protection**: Optionally secure your games with password protection
+- **Multi-player Support**: Join as white, black, or spectator
+- **Real-time Synchronization**: Game state updates for all viewers in real-time
+- **Move History**: Undo moves and track game progress
+- **Open Access**: No account required to create or join games
+
+## Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **Chess Logic**: [chess.js](https://github.com/jhlywa/chess.js)
+- **UI Components**:
+  - [react-chessboard](https://github.com/Clariity/react-chessboard)
+  - [shadcn/ui](https://ui.shadcn.com/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Database**: PostgreSQL with [Drizzle ORM](https://orm.drizzle.team/)
+- **Security**: [bcrypt](https://github.com/kelektiv/node.bcrypt.js) for password hashing
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js (v18+)
+- pnpm
+- PostgreSQL database (using docker-compose)
+
+### Installation
+
+1. Clone the repository
+
+   ```bash
+   git clone https://github.com/yourusername/link-chess.git
+   cd link-chess
+   ```
+
+2. Install dependencies
+
+   ```bash
+   pnpm install
+   ```
+
+3. Set up environment variables
+   Create a `.env.local` file in the root directory with the following variables:
+
+   ```
+   DATABASE_URL=postgresql://username:password@localhost:5432/linkchess
+   ```
+
+4. Set up database using Docker
+
+The project includes a `docker-compose.yml` file for easy setup:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker-compose up -d
 ```
+
+5. Start the development server
+
+   ```bash
+   pnpm dev
+   ```
+
+6. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## How It Works
+
+1. Create a new chess game from the homepage (with optional password)
+2. Share the generated link with your opponent or friends
+3. Players can join as white, black, or spectators
+4. Game state synchronizes automatically between all connected clients
+5. Play chess in real-time without needing accounts or logins
 
 ## Testing
 
-The project uses Jest and React Testing Library for testing. The tests cover utility functions, hooks, and some core functionality.
-
-### Test Coverage
-
-Current test coverage:
-- **Overall**: ~12% line coverage across custom code (excluding shadcn UI components)
-- **Fully covered modules**:
-  - `lib/utils.ts`: 100% line, branch, and function coverage
-  - `hooks/use-mobile.ts`: 100% line, branch, and function coverage
-  - `app/networkStorage.ts`: 100% line, 75% branch coverage
-- **Modules needing tests**:
-  - `app/Game.tsx`: Core game component 
-  - `app/store.tsx`: Zustand state management
-  - API routes: `app/api/game/[id]/route.ts`
-  - Game pages: `app/game/[slug]/page.tsx`, `app/page.tsx`
-  - DB modules: `db/index.ts`, `db/schema.ts`
-
-This project has a solid test foundation that can be expanded. The current tests focus on utility functions and hooks that are easier to test in isolation. Complex components using Zustand state management or React components with many interactions would benefit from more comprehensive testing.
-
-Note: shadcn UI components (`components/ui/*`) are excluded from coverage reporting as they are third-party components.
-
-### Running Tests
-
-To run the tests:
+Run the test suite with:
 
 ```bash
-npm test
-# or
-yarn test
-# or
 pnpm test
-# or
-bun test
 ```
 
-You can also run tests in watch mode:
-
-```bash
-npm run test:watch
-# or
-yarn test:watch
-# or
-pnpm test:watch
-# or
-bun test:watch
-```
-
-To generate test coverage reports:
-
-```bash
-npm run test:coverage
-# or
-yarn test:coverage
-# or
-pnpm test:coverage
-# or
-bun test:coverage
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
