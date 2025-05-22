@@ -1,4 +1,4 @@
-export const createNetworkStorage = (id: string) => ({
+export const createNetworkStorage = (id: number) => ({
   getItem: async (name: string): Promise<string | null> => {
     try {
       const response = await fetch(
